@@ -3,7 +3,7 @@
 require('dotenv').config();
 
 // #1 - Install and Set Up Mongoose
-let mongoose = require('mongoose');
+const mongoose = require('mongoose');
 mongoose.connect(process.env.MONGO_URI);
 
 let Person;
