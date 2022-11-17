@@ -79,10 +79,17 @@ const findPersonById = (personId, done) => {
   });
 };
 
+// #6 - Perform Classic Updates by Running Fined, Edit, then Save
 const findEditThenSave = (personId, done) => {
   const foodToAdd = "hamburger";
-
-  done(null /*, data*/);
+  Person.findById({_id: personId}, (err, foundPerson) => {
+    if (err) return console.error(err);
+    foundPerson.favoriteFoods.push("hamburber");
+    foundPerson.save((err, updatedPerson) => {
+      if (err) return console.error(err);
+      done(null, updatedPerson)
+    })
+  })
 };
 
 const findAndUpdate = (personName, done) => {
