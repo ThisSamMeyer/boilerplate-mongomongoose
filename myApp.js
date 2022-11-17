@@ -57,7 +57,7 @@ const createManyPeople = (arrayOfPeople, done) => {
 
 // #4 - Use model.find() to Search Your Database
 const findPeopleByName = (personName, done) => {
-  Person.find({name: personName}, (err, data) => {
+  Person.find({name: personName}, (err, personFound) => {
     if (err) return console.error(err);
     done(null, personFound);
   })
