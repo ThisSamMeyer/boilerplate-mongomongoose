@@ -13,6 +13,7 @@ const personSchema = new Schema ({
   age: Number,
   favoriteFoods: [String]
 });
+
 let Person = mongoose.model("Person", personSchema);
 
 // #3 - Create and Save a Record of a Model
@@ -22,15 +23,36 @@ const createAndSavePerson = (done) => {
     age: 33,
     favoriteFoods: ["pizza", "ramen", "CheeseItz"]
   });
-
   chrisFarr.save((err, data) => {
     if (err) return console.error(err);
     done(null, data);
   });
 };
 
+let arrayOfPeople = [
+  {
+    name: "Chris Farr",
+    age: 33,
+    favoriteFoods: ["pizza", "ramen", "CheeseItz"]
+  },
+  {
+    name: "Samantha Meyer",
+    age: 33,
+    favoriteFoods: ["pizza", "oysters", "olives"]
+  },
+  {
+    name: "Indy Pants",
+    age: 9,
+    favoriteFoods: ["leftovers", "table scraps", "bacon"]
+  }
+];
+
+// #3 - Create Many Records with model.create()
 const createManyPeople = (arrayOfPeople, done) => {
-  done(null /*, data*/);
+  Person.create(arrayOfPeople, (err, data) => {
+    if (err) return console.error(err);
+    done(null, data);
+  });
 };
 
 const findPeopleByName = (personName, done) => {
