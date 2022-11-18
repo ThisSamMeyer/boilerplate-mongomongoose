@@ -95,14 +95,18 @@ const findEditThenSave = (personId, done) => {
 // #7 - Perform New Updates on a Document Using model.findOneAndUpdate()
 const findAndUpdate = (personName, done) => {
   const ageToSet = 20;
-  Person.findOneAndUpdate({name: personName}, {age: ageToSet}, {new: true}, (err, data) => {
+  Person.findOneAndUpdate({name: personName}, {age: ageToSet}, {new: true}, (err, updatedDoc) => {
     if (err) return console.error(err);
-    done(null, data);
+    done(null, updatedDoc);
   })
 };
 
+// #8 - Delete One Document Using model.findByIdAndRemove
 const removeById = (personId, done) => {
-  done(null /*, data*/);
+  Person.findByIdAndRemove({_id: personId}, (err, data) => {
+    if (err) return console.error(err);
+    done(null, data);
+  })
 };
 
 const removeManyPeople = (done) => {
