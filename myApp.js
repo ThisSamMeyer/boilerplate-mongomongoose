@@ -79,7 +79,7 @@ const findPersonById = (personId, done) => {
   });
 };
 
-// #6 - Perform Classic Updates by Running Fined, Edit, then Save
+// #6 - Perform Classic Updates by Running Find, Edit, then Save
 const findEditThenSave = (personId, done) => {
   const foodToAdd = "hamburger";
   Person.findById({_id: personId}, (err, foundPerson) => {
